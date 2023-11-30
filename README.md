@@ -7,7 +7,6 @@ This project is a TV Shows application built with [Vue.js](https://vuejs.org/) a
 - [Architecture Decisions](#architecture-decisions)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
-- [Node.js and NPM Versions](#nodejs-and-npm-versions)
 
 ## Architecture Decisions
 
