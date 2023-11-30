@@ -5,7 +5,8 @@ export default createStore({
   state: {
     shows: null,
     genres: null,
-    filteredShows: null
+    filteredShows: null,
+    loading: false
   },
   mutations: {
     setShows(state, data) {
@@ -17,6 +18,9 @@ export default createStore({
     setGenres(state, data) {
       state.genres = data;
     },
+    setLoading(state, data) {
+      state.loading = data;
+    }
   },
   actions: {
     async fetchAllShows({ commit }) {
@@ -46,7 +50,7 @@ export default createStore({
         // Search shows from the API
         const response = await searchShows(searchQuery);
 
-        commit('setFilteredShows', response.data);
+        commit('setFilteredShows', response.data.map((show) => show.show));
       } catch (error) {
         // Log and rethrow any API errors
         console.error('API Error:', error);
@@ -65,6 +69,7 @@ export default createStore({
     showDetails: (state) => (id) => state.shows.filter(show => show.id == id),
 
     filteredShows: (state) => state.filteredShows,
-    filteredShowDetails: (state) => (id) => state.filteredShows.filter(show => show.show.id == id),
+    filteredShowDetails: (state) => (id) => state.filteredShows.filter(show => show.id == id),
+    loading: (state) => state.loading
   },
 });
