@@ -29,7 +29,7 @@ describe('DashboardView', () => {
             getters: {
               loading: false,
               genres: null,
-              showsByGenre: (genre) => { return [{id: 1}]}
+              showsByGenre: () => { return [{id: 1}]}
             },
           },
         },
